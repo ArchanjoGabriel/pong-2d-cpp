@@ -17,4 +17,9 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(pong_game src/main.cpp)
 
+target_include_directories(pong_game
+    PRIVATE
+        include
+)
+
 target_link_libraries(pong_game PRIVATE SFML::Graphics)
