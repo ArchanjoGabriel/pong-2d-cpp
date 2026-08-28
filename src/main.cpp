@@ -30,6 +30,14 @@ int main() {
     paddle1.setSize({paddle_W, paddle_H});
     paddle1.setFillColor(sf::Color::White);
 
+    // Paddle 2
+    sf::RectangleShape paddle2;
+    float paddle2_X = BASE_W - paddle_W -paddle_margin_X;
+    float paddle2_Y = (BASE_H/2.0) - (paddle_H/2.0);
+    paddle2.setPosition({paddle2_X, paddle2_Y});
+    paddle2.setSize({paddle_W, paddle_H});
+    paddle2.setFillColor(sf::Color::White);
+
     while (window.isOpen()) {
 
         while (const std::optional event = window.pollEvent()) {
@@ -42,6 +50,7 @@ int main() {
         ball.draw(window);
 
         window.draw(paddle1);
+        window.draw(paddle2);
 
         window.display();
     }
