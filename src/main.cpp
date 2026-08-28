@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "../include/Ball.h"
-#include "SFML/Graphics/CircleShape.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
 int main() {
@@ -14,6 +14,22 @@ int main() {
     window.setFramerateLimit(60);
 
     Ball ball({BASE_W/2.0, BASE_H/2.0});
+
+    // Paddle general variables
+    float paddle_W = 15;
+    float paddle_H = 70;
+    float paddle_margin_X = 5;
+    float paddle_margin_Y = 5;
+    float paddle_VY = 10;
+
+    // Paddle 1
+    sf::RectangleShape paddle1;
+    float paddle1_X = paddle_margin_X;
+    float paddle1_Y = (BASE_H/2.0) - (paddle_H/2.0);
+    paddle1.setPosition({paddle1_X, paddle1_Y});
+    paddle1.setSize({paddle_W, paddle_H});
+    paddle1.setFillColor(sf::Color::White);
+
     while (window.isOpen()) {
 
         while (const std::optional event = window.pollEvent()) {
@@ -24,6 +40,8 @@ int main() {
         window.clear(sf::Color::Black);
 
         ball.draw(window);
+
+        window.draw(paddle1);
 
         window.display();
     }
