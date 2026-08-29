@@ -10,6 +10,14 @@
 class Ball {
     sf::CircleShape ball;
 
+    sf::Clock clock;
+    const float WAITING_TIME;
+
+    // States
+    const int MOVING;
+    const int WAITING;
+    int CURRENT_STATE;
+
     float dy[10] = {-5.0, -4.0, -3.0, -2.0, -1.0, 1.0, 2.0, 3.0, 4.0, 5.0};
 
     std::mt19937 rng;
@@ -29,7 +37,11 @@ class Ball {
 public:
 
     Ball(float x, float y)
-        : rng(std::random_device{}()),
+        : WAITING_TIME(2),
+          MOVING(0),
+          WAITING(1),
+          CURRENT_STATE(WAITING),
+          rng(std::random_device{}()),
           dist(0, 9)
     {
         this->x = x;
@@ -43,13 +55,10 @@ public:
         ball.setPosition({x, y});
         ball.setFillColor(sf::Color::White);
         ball.setOrigin({r, r});
+
+        clock.start();
     }
 
     void checkPaddleCollision(const sf::FloatRect &bounds);
-
-    void draw(sf::RenderWindow &window) {
-        checkMapBoundaries();
-        move();
-        window.draw(ball);
-    }
+    void draw(sf::RenderWindow &window);
 };

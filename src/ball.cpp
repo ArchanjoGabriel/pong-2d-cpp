@@ -17,11 +17,17 @@ void Ball::checkMapBoundaries() {
     if (ball.getPosition().x - r <= 0) {
         player2++;
         resetBallPosition();
+        CURRENT_STATE = WAITING;
+        vy = dy[dist(rng)];
+        clock.start();
     }
 
     if (ball.getPosition().x + r >= BASE_W) {
         player1++;
         resetBallPosition();
+        CURRENT_STATE = WAITING;
+        vy = dy[dist(rng)];
+        clock.start();
     }
 }
 
@@ -33,4 +39,20 @@ void Ball::checkPaddleCollision(const sf::FloatRect &bounds) {
 
 void Ball::resetBallPosition() {
     ball.setPosition({BASE_W/2.0, BASE_H/2.0});
+}
+
+void Ball::draw(sf::RenderWindow &window) {
+    if (clock.getElapsedTime().asSeconds() > WAITING_TIME) {
+        clock.reset();
+        CURRENT_STATE = MOVING;
+    }
+
+    if (CURRENT_STATE == WAITING) {
+        window.draw(ball);
+    }
+    else if (CURRENT_STATE == MOVING) {
+        checkMapBoundaries();
+        move();
+        window.draw(ball);
+    }
 }
