@@ -16,6 +16,7 @@ class Ball {
     float vy;
 
     void move();
+    void checkMapBoundaries();
 
 public:
 
@@ -34,6 +35,7 @@ public:
     }
 
     void draw(sf::RenderWindow &window) {
+        checkMapBoundaries();
         move();
         window.draw(ball);
     }

@@ -3,10 +3,7 @@
 #include "../include/Ball.h"
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
-
-// Screen dimensions
-constexpr int BASE_W = 800;
-constexpr int BASE_H = 600;
+#include "variables.h"
 
 // Paddle general variables
 constexpr float  paddle_W = 15;
