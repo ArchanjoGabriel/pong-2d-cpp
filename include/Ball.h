@@ -29,6 +29,7 @@ class Ball {
 
     float vx;
     float vy;
+    float mag;
 
     void move();
     void checkMapBoundaries();
@@ -50,6 +51,7 @@ public:
 
         vx = 5.0;
         vy = dy[dist(rng)];
+        mag = 1.2;
 
         ball.setRadius(r);
         ball.setPosition({x, y});

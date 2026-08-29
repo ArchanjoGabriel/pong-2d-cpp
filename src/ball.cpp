@@ -19,6 +19,7 @@ void Ball::checkMapBoundaries() {
         resetBallPosition();
         CURRENT_STATE = WAITING;
         vy = dy[dist(rng)];
+        vx = -5.0;
         clock.start();
     }
 
@@ -27,6 +28,7 @@ void Ball::checkMapBoundaries() {
         resetBallPosition();
         CURRENT_STATE = WAITING;
         vy = dy[dist(rng)];
+        vx = 5.0;
         clock.start();
     }
 }
@@ -34,6 +36,7 @@ void Ball::checkMapBoundaries() {
 void Ball::checkPaddleCollision(const sf::FloatRect &bounds) {
     if (bounds.findIntersection(ball.getGlobalBounds())) {
         vx *= -1;
+        vx *= mag;
     }
 }
 
