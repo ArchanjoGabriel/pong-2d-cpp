@@ -53,7 +53,7 @@ int main() {
             paddle1.move({0, paddle_VY});
         }
 
-        // Check for collisions between the paddles and the map boundaries
+        // Check for collisions between the paddle 1 and the map boundaries
         if (paddle1.getPosition().y <= 0) {
             paddle1.setPosition({paddle1.getPosition().x, paddle_margin_Y});
         }
@@ -68,6 +68,15 @@ int main() {
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
             paddle2.move({0, paddle_VY});
+        }
+
+        // Check for collisions between the paddle 2 and the map boundaries
+        if (paddle2.getPosition().y <= 0) {
+            paddle2.setPosition({paddle2.getPosition().x, paddle_margin_Y});
+        }
+
+        if (paddle2.getPosition().y + paddle_H >= BASE_H) {
+            paddle2.setPosition({paddle2.getPosition().x, BASE_H-paddle_H-paddle_margin_Y});
         }
 
         window.clear(sf::Color::Black);
