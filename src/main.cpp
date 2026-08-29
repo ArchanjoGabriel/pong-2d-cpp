@@ -4,6 +4,7 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "variables.h"
+#include "SFML/Graphics/Text.hpp"
 
 // Paddle general variables
 constexpr float  paddle_W = 15;

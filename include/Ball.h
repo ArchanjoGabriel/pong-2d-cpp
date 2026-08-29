@@ -17,6 +17,7 @@ class Ball {
 
     void move();
     void checkMapBoundaries();
+    void resetBallPosition();
 
 public:
 
