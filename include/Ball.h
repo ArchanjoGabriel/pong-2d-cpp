@@ -35,6 +35,8 @@ public:
         ball.setOrigin({r, r});
     }
 
+    void checkPaddleCollision(const sf::FloatRect &bounds);
+
     void draw(sf::RenderWindow &window) {
         checkMapBoundaries();
         move();

@@ -25,6 +25,12 @@ void Ball::checkMapBoundaries() {
     }
 }
 
+void Ball::checkPaddleCollision(const sf::FloatRect &bounds) {
+    if (bounds.findIntersection(ball.getGlobalBounds())) {
+        vx *= -1;
+    }
+}
+
 void Ball::resetBallPosition() {
     ball.setPosition({BASE_W/2.0, BASE_H/2.0});
 }

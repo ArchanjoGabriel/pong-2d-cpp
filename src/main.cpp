@@ -100,6 +100,8 @@ int main() {
 
         paddle1Events(paddle1);
         paddle2Events(paddle2);
+        ball.checkPaddleCollision(paddle1.getGlobalBounds());
+        ball.checkPaddleCollision(paddle2.getGlobalBounds());
 
         player1Score.setString(std::to_string(player1));
         player2Score.setString(std::to_string(player2));
