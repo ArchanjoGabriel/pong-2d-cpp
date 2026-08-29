@@ -45,6 +45,14 @@ int main() {
                 window.close();
         }
 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W)) {
+            paddle1.move({0, -(paddle_VY)});
+        }
+
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+            paddle1.move({0, paddle_VY});
+        }
+
         window.clear(sf::Color::Black);
 
         ball.draw(window);
