@@ -53,6 +53,15 @@ int main() {
             paddle1.move({0, paddle_VY});
         }
 
+        // Check for collisions between the paddles and the map boundaries
+        if (paddle1.getPosition().y <= 0) {
+            paddle1.setPosition({paddle1.getPosition().x, paddle_margin_Y});
+        }
+
+        if (paddle1.getPosition().y + paddle_H >= BASE_H) {
+            paddle1.setPosition({paddle1.getPosition().x, BASE_H-paddle_H-paddle_margin_Y});
+        }
+
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
             paddle2.move({0, -(paddle_VY)});
         }
