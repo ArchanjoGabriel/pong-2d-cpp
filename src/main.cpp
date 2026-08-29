@@ -49,8 +49,16 @@ int main() {
             paddle1.move({0, -(paddle_VY)});
         }
 
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S)) {
             paddle1.move({0, paddle_VY});
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) {
+            paddle2.move({0, -(paddle_VY)});
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) {
+            paddle2.move({0, paddle_VY});
         }
 
         window.clear(sf::Color::Black);
