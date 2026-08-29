@@ -4,6 +4,7 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "variables.h"
+#include "SFML/Graphics/Font.hpp"
 #include "SFML/Graphics/Text.hpp"
 
 // Paddle general variables
@@ -75,6 +76,21 @@ int main() {
     paddle2.setSize({paddle_W, paddle_H});
     paddle2.setFillColor(sf::Color::White);
 
+    // Load Font
+    const sf::Font font("../assets/fonts/PressStart2P-Regular.ttf");
+
+    sf::Text player1Score(font);
+    player1Score.setPosition({(BASE_W/2.0) - (BASE_W/4.0), BASE_H/16.0});
+    player1Score.setCharacterSize(30);
+    player1Score.setStyle(sf::Text::Bold);
+    player1Score.setFillColor(sf::Color::White);
+
+    sf::Text player2Score(font);
+    player2Score.setPosition({(BASE_W/2.0) + (BASE_W/4.0), BASE_H/16.0});
+    player2Score.setCharacterSize(30);
+    player2Score.setStyle(sf::Text::Bold);
+    player2Score.setFillColor(sf::Color::White);
+
     while (window.isOpen()) {
 
         while (const std::optional event = window.pollEvent()) {
@@ -85,12 +101,18 @@ int main() {
         paddle1Events(paddle1);
         paddle2Events(paddle2);
 
+        player1Score.setString(std::to_string(player1));
+        player2Score.setString(std::to_string(player2));
+
         window.clear(sf::Color::Black);
 
         ball.draw(window);
 
         window.draw(paddle1);
         window.draw(paddle2);
+
+        window.draw(player1Score);
+        window.draw(player2Score);
 
         window.display();
     }
