@@ -15,6 +15,8 @@ class Ball {
     float vx;
     float vy;
 
+    void move();
+
 public:
 
     Ball(float x, float y) {
@@ -32,6 +34,7 @@ public:
     }
 
     void draw(sf::RenderWindow &window) {
+        move();
         window.draw(ball);
     }
 };

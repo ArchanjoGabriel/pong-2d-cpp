@@ -15,7 +15,10 @@ FetchContent_Declare(SFML
 
 FetchContent_MakeAvailable(SFML)
 
-add_executable(pong_game src/main.cpp)
+add_executable(pong_game
+        src/main.cpp
+        src/ball.cpp
+)
 
 target_include_directories(pong_game
     PRIVATE
