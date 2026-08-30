@@ -26,3 +26,9 @@ target_include_directories(pong_game
 )
 
 target_link_libraries(pong_game PRIVATE SFML::Graphics SFML::Audio)
+
+add_custom_command(TARGET pong_game POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets
+        $<TARGET_FILE_DIR:pong_game>/assets
+)

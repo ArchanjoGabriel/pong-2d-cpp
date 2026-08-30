@@ -61,7 +61,7 @@ int main() {
     window.setFramerateLimit(60);
 
     // Load sound effects
-    const sf::SoundBuffer buffer("../assets/sounds/paddleSound.wav");
+    const sf::SoundBuffer buffer("assets/sounds/paddleSound.wav");
     sf::Sound hitSound(buffer);
 
     Ball ball(BASE_W/2.0, BASE_H/2.0, hitSound);
@@ -83,7 +83,7 @@ int main() {
     paddle2.setFillColor(sf::Color::White);
 
     // Load Font
-    const sf::Font font("../assets/fonts/PressStart2P-Regular.ttf");
+    const sf::Font font("assets/fonts/PressStart2P-Regular.ttf");
 
     sf::Text player1Score(font);
     player1Score.setPosition({(BASE_W/2.0) - (BASE_W/4.0), BASE_H/16.0});
