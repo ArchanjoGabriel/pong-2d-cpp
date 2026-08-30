@@ -25,4 +25,4 @@ target_include_directories(pong_game
         include
 )
 
-target_link_libraries(pong_game PRIVATE SFML::Graphics)
+target_link_libraries(pong_game PRIVATE SFML::Graphics SFML::Audio)

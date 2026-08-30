@@ -2,6 +2,8 @@
 #define PONG_GAME_BALL_H
 #include <random>
 
+#include "SFML/Audio/Sound.hpp"
+#include "SFML/Audio/SoundBuffer.hpp"
 #include "SFML/Graphics/CircleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 
@@ -9,6 +11,8 @@
 
 class Ball {
     sf::CircleShape ball;
+
+    sf::Sound hitSound;
 
     sf::Clock clock;
     const float WAITING_TIME;
@@ -37,8 +41,9 @@ class Ball {
 
 public:
 
-    Ball(float x, float y)
-        : WAITING_TIME(2),
+    Ball(float x, float y, const sf::Sound &sound)
+        : hitSound(sound),
+          WAITING_TIME(2),
           MOVING(0),
           WAITING(1),
           CURRENT_STATE(WAITING),

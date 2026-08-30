@@ -4,6 +4,8 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "variables.h"
+#include "SFML/Audio/Sound.hpp"
+#include "SFML/Audio/SoundBuffer.hpp"
 #include "SFML/Graphics/Font.hpp"
 #include "SFML/Graphics/Text.hpp"
 
@@ -58,7 +60,11 @@ int main() {
     sf::RenderWindow window(sf::VideoMode({BASE_W, BASE_H}), "PONG");
     window.setFramerateLimit(60);
 
-    Ball ball({BASE_W/2.0, BASE_H/2.0});
+    // Load sound effects
+    const sf::SoundBuffer buffer("../assets/sounds/paddleSound.wav");
+    sf::Sound hitSound(buffer);
+
+    Ball ball(BASE_W/2.0, BASE_H/2.0, hitSound);
 
     // Paddle 1
     sf::RectangleShape paddle1;
