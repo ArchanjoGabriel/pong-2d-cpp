@@ -37,6 +37,7 @@ void Ball::checkPaddleCollision(const sf::FloatRect &bounds) {
     if (bounds.findIntersection(ball.getGlobalBounds())) {
         vx *= -1;
         vx *= mag;
+        hitSound.play();
     }
 }
 
